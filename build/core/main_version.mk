@@ -1,19 +1,14 @@
-# LineageOS System Version
-ADDITIONAL_BUILD_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.modversion=$(LINEAGE_VERSION) \
-    ro.lineagelegal.url=https://lineageos.org/legal
+PRODUCT_VERSION = 0.1
+ifneq ($(ECHELON_BUILDTYPE),)
+ECHELON_VERSION := echelonOS-v$(PRODUCT_VERSION)-$(shell date +%Y%m%d)-$(ECHELON_BUILD)-$(ECHELON_BUILDTYPE)
+else
+ECHELON_VERSION := echelonOS-v$(PRODUCT_VERSION)-$(shell date +%Y%m%d)-$(ECHELON_BUILD)-Unofficial
+ECHELON_BUILDTYPE := Unofficial
+endif
 
-# LineageOS Platform Display Version
+# ECHELON System Version
 ADDITIONAL_BUILD_PROPERTIES += \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION)
-
-# LineageOS Platform SDK Version
-ADDITIONAL_BUILD_PROPERTIES += \
-    ro.lineage.build.version.plat.sdk=$(LINEAGE_PLATFORM_SDK_VERSION)
-
-# LineageOS Platform Internal Version
-ADDITIONAL_BUILD_PROPERTIES += \
-    ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+    ro.echelon.version=$(ECHELON_VERSION) \
+    ro.echelon.releasetype=$(ECHELON_BUILDTYPE) \
+    ro.echelon.build.version=$(PRODUCT_VERSION) \
+    ro.modversion=$(ECHELON_VERSION) \
